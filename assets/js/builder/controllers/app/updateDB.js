@@ -330,6 +330,7 @@ define( [], function() {
 				).fail( function( xhr, status, error ) {
 					console.log( 'There was an error sending form data' );
 					console.log( error );
+					that.handleFinalFailure( xhr, status, error, action );
 				});
 		},
 
