@@ -44,6 +44,11 @@ class NF_Admin_Processes_ChunkPublish extends NF_Abstracts_BatchProcess
      */
     public function process()
     {
+        // If we were told this is a new publish...
+        if ( $this->$data[ 'new_publish' ] ) {
+            // Delete our option to reset the process.
+            $this->remove_option();
+        }
         // Fetch our option to see what step we're on.
         $batch = get_option( 'nf_chunk_publish_' . $this->form_id );
         // If we don't have an option to see what step we're on...
@@ -223,15 +228,8 @@ class NF_Admin_Processes_ChunkPublish extends NF_Abstracts_BatchProcess
             $this->_errors = array_merge( $this->_errors, $this->_data[ 'errors' ] );
         }
         
-        // Remove our option to manage the process.
-        delete_option( 'nf_chunk_publish_' . $this->form_id );
-        // If our form_id was a temp id...
-        if ( ! is_numeric( $this->form_id ) ) {
-            // Remove all of our chunk options.
-            global $wpdb;
-            $sql = "DELETE FROM `" . $wpdb->prefix . "options` WHERE option_name LIKE 'nf_form_" . $this->form_id . "_publishing_%'";
-            $wpdb->query( $sql );
-        }
+        // Remove our option.
+        $this->remove_option();
 
         $response = array( 'data' => $this->_data, 'errors' => $this->_errors, 'debug' => $this->_debug, 'batch_complete' => true );
 
@@ -269,6 +267,21 @@ class NF_Admin_Processes_ChunkPublish extends NF_Abstracts_BatchProcess
          * End old data.
          **************************************************************
          */
+    }
+    
+    /*
+     * Function to remove our management option and remove any temporary chunk data.
+     */
+    public function remove_option() {
+        // Remove our option to manage the process.
+        delete_option( 'nf_chunk_publish_' . $this->form_id );
+        // If our form_id was a temp id...
+        if ( ! is_numeric( $this->form_id ) ) {
+            // Remove all of our chunk options.
+            global $wpdb;
+            $sql = "DELETE FROM `" . $wpdb->prefix . "options` WHERE option_name LIKE 'nf_form_" . $this->form_id . "_publishing_%'";
+            $wpdb->query( $sql );
+        }
     }
 
 }
