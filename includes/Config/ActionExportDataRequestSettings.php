@@ -21,4 +21,12 @@ return apply_filters( 'ninja_forms_action_exportdatarequest_settings', array(
 		'width'          => 'one-half',
 		'use_merge_tags' => true,
 	),
+	'do_on_confirm'   => array(
+		'name'           => 'do_on_confirm',
+		'type'           => 'toggle',
+		'group'          => 'advanced',
+		'label'          => __( 'Perform Request On User Confirmation ( Skip Admin Approval )',
+			'ninja-forms' ),
+		'width'          => 'full',
+	),
 ) );

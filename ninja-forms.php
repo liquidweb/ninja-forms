@@ -401,6 +401,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
             
             add_action( 'admin_init', array( self::$instance, 'nf_do_telemetry' ) );
             add_action( 'admin_init', array( self::$instance, 'nf_plugin_add_suggested_privacy_content' ), 20 );
+            add_action( 'admin_init', array( self::$instance, 'nf_handle_user_request_confirmations' ), 25 );
 
             return self::$instance;
         }

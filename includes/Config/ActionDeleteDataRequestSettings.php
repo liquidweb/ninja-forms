@@ -21,4 +21,19 @@ return apply_filters( 'ninja_forms_action_deletedatarequest_settings', array(
 		'width'          => 'one-half',
 		'use_merge_tags' => true,
 	),
+	'do_on_confirm'   => array(
+		'name'           => 'do_on_confirm',
+		'type'           => 'toggle',
+		'group'          => 'advanced',
+		'label'          => __( 'Perform Request On User Confirmation ( Skip Admin Approval )',
+			'ninja-forms' ),
+		'width'          => 'full',
+	),
+	'anonymize'   => array(
+		'name'           => 'anonymize',
+		'type'           => 'toggle',
+		'group'          => 'advanced',
+		'label'          => __( 'Anonymize Data', 'ninja-forms' ),
+		'width'          => 'full',
+	),
 ) );
