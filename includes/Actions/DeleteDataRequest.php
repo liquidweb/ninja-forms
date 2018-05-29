@@ -83,9 +83,6 @@ final class NF_Actions_DeleteDataRequest extends NF_Abstracts_Action
 			add_post_meta( $request_id,
 				'perform_on_confirmation',
 				$action_settings[ 'do_on_confirm' ] );
-			add_post_meta( $request_id,
-				'anonymize_data',
-				$action_settings[ 'anonymize_data' ] );
 			
 			// send the request if it's not an error.
 			wp_send_user_request( $request_id );
