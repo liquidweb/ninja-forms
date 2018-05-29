@@ -29,11 +29,4 @@ return apply_filters( 'ninja_forms_action_deletedatarequest_settings', array(
 			'ninja-forms' ),
 		'width'          => 'full',
 	),
-	'anonymize'   => array(
-		'name'           => 'anonymize',
-		'type'           => 'toggle',
-		'group'          => 'advanced',
-		'label'          => __( 'Anonymize Data', 'ninja-forms' ),
-		'width'          => 'full',
-	),
 ) );

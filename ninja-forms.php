@@ -444,6 +444,10 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
 			    '<p>' . __( 'If you are using Ninja Forms to collect personal information, you should consult a legal professional for your use case.' ) . '</p>';
 	    }
 
+		public function nf_handle_user_request_confirmations() {
+//		    wp_ajax_wp_privacy_export_personal_data();
+	    }
+
         /**
          * NF Whip Notice
          * If the user is on a version below PHP 5.6 then we get an instance of the
