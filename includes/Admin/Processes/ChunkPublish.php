@@ -216,7 +216,7 @@ class NF_Admin_Processes_ChunkPublish extends NF_Abstracts_BatchProcess
         }
 
         delete_user_option( get_current_user_id(), 'nf_form_preview_' . $form_data['id'] );
-        update_option( 'nf_form_' . $form_data[ 'id' ], $form_data );
+        update_option( 'nf_form_' . $form_data[ 'id' ], $form_data, 'no' );
 
         do_action( 'ninja_forms_save_form', $form->get_id() );
 
